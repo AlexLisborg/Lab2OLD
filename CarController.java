@@ -14,7 +14,7 @@ public class CarController {
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
+    // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
 
@@ -28,8 +28,12 @@ public class CarController {
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
+        Saab95 saab = new Saab95();
+        saab.setX(30); saab.setY(300);
+
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(saab);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
