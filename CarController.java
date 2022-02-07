@@ -21,7 +21,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<ACar> cars = new ArrayList<>();
+    ArrayList<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -43,13 +43,14 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (ACar car : cars) {
+            for (Car car : cars) {
                 car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
+                int x = (int) Math.round(car.getX());
+                int y = (int) Math.round(car.getY());
+                frame.drawPanel.moveit(x, y, car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+
             }
         }
     }
@@ -57,9 +58,30 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (ACar car : cars
+        for (Car car : cars
                 ) {
             car.gas(gas);
         }
     }
+    void startEngine(){
+        for (Car car : cars
+        ) {
+            car.startEngine();
+        }
+    }
+
+    void turboOn() {
+       for (Car car : cars
+       ) {
+           if (car instanceof Saab95) ((Saab95) car).setTurboOn();
+       }
+    }
+
+    void turboOff() {
+        for (Car car : cars
+        ) {
+            if (car instanceof Saab95) ((Saab95) car).setTurboOff();
+        }
+    }
+
 }
