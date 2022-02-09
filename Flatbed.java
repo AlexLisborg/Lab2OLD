@@ -15,7 +15,7 @@ public class Flatbed {
         angle = 0;
         this.anglelimit = Math.toRadians(anglelimit);
         this.incDecSpeed = Math.toRadians(incDecSpeed);
-        //this.car = car;
+        this.car = car;
 
     }
 

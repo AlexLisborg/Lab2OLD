@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 
 /***
@@ -16,7 +17,7 @@ public class Volvo240 extends Car{
      * Constructor for  car Volvo240.
      */
     public Volvo240(){
-        super(4,100,Color.black,"Volvo240",2);
+        super(4,100,Color.black,"Volvo240",2, "pics/Volvo240.jpg");
         //stopEngine();
     }
 

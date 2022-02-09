@@ -34,9 +34,10 @@ public class CarController {
 
         cc.cars.add(new Volvo240());
         cc.cars.add(saab);
+        cc.cars.add(new Scania());
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.frame = new CarView("CarSim 1.0", cc, cc.cars);
 
         // Start the timer
         cc.timer.start();
@@ -49,9 +50,7 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 car.move();
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y, car);
+                frame.drawPanel.moveit(car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
 
@@ -67,6 +66,14 @@ public class CarController {
             car.gas(gas);
         }
     }
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars
+        ) {
+            car.brake(brake);
+        }
+    }
+
     void startEngine(){
         for (Car car : cars
         ) {
@@ -87,5 +94,22 @@ public class CarController {
             if (car instanceof Saab95) ((Saab95) car).setTurboOff();
         }
     }
+    void stopEngine() {
+        for (Car car : cars
+        ) {
+            car.stopEngine();
+        }
+    }
 
-}
+    void liftBed() {
+    for (Car car : cars) {
+        if (car instanceof FlatbedCar) {
+            ((FlatbedCar) car).incrementFlatbed();}}}
+
+    void lowerBed() {
+        for (Car car : cars) {
+            if(car instanceof FlatbedCar) {
+                ((FlatbedCar) car).decrementFlatbed();
+            }}}}
+
+

@@ -4,6 +4,8 @@ public interface Positionable {
 
     double getY();
 
+    double getSize();
+
     void setX(double d);
 
     void setY(double d);
